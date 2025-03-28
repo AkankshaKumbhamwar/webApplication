@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
-import 'express-async-errors';
 import { json } from "body-parser";
 import dotenv from 'dotenv';
+import { routes } from "./routes";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ const port = parseInt(`${PORT}`) || 4054;
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
-
+app.use(routes)
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
